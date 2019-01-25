@@ -11,21 +11,21 @@ namespace SeleniumPageObjectPattern
 {
     class GetMethods
     {
-        public static string GetText(IWebDriver driver, string element, string value, string elementtype)
+        public static string GetText(string element, string value, PropertyType elementtype)
         {
-            if (elementtype == "Id")
-                return driver.FindElement(By.Id(element)).GetAttribute(value);
-            if (elementtype == "Name")
-                return driver.FindElement(By.Id(element)).GetAttribute(value);
+            if (elementtype == PropertyType.Id)
+                return PropertiesCollection.driver.FindElement(By.Id(element)).GetAttribute(value);
+            if (elementtype == PropertyType.Name)
+                return PropertiesCollection.driver.FindElement(By.Id(element)).GetAttribute(value);
             else return String.Empty;
         }
 
-        public static string GetTextDDL(IWebDriver driver, string element, string value, string elementtype)
+        public static string GetTextDDL(string element, string value, PropertyType elementtype)
         {
-            if (elementtype == "Id")
-                return new SelectElement(driver.FindElement(By.Id(element))).AllSelectedOptions.SingleOrDefault().Text;
-            if (elementtype == "Name")
-                return new SelectElement(driver.FindElement(By.Id(element))).AllSelectedOptions.SingleOrDefault().Text;
+            if (elementtype == PropertyType.Id)
+                return new SelectElement(PropertiesCollection.driver.FindElement(By.Id(element))).AllSelectedOptions.SingleOrDefault().Text;
+            if (elementtype == PropertyType.Name)
+                return new SelectElement(PropertiesCollection.driver.FindElement(By.Id(element))).AllSelectedOptions.SingleOrDefault().Text;
             else return String.Empty;
         }
     }

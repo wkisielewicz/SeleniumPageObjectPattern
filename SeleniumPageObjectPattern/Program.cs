@@ -12,8 +12,6 @@ namespace SeleniumPageObjectPattern
     class Program
     {
 
-        IWebDriver driver = new ChromeDriver();
-
         static void Main(string[] args)
         {
             
@@ -22,22 +20,22 @@ namespace SeleniumPageObjectPattern
         [SetUp]
         public void Initialize()
         {
-            
-            driver.Navigate().GoToUrl("https://www.ncbi.nlm.nih.gov/pubmed/");
+            PropertiesCollection.driver = new ChromeDriver();
+            PropertiesCollection.driver.Navigate().GoToUrl("https://www.ncbi.nlm.nih.gov/pubmed/");
         }
 
         [Test]
         public void ExecuteTets()
         {
-            SetMethods.SelectDropDown(driver, "database", "PMC", "Id");
-            SetMethods.EnterText(driver, "term", "genes", "Id");
-            SetMethods.Click(driver,"search", "Id");
+            SetMethods.SelectDropDown("database", "PMC", PropertyType.Id);
+            SetMethods.EnterText("term", "genes", PropertyType.Id);
+            SetMethods.Click("search", PropertyType.Id);
         }
 
         [TearDown]
         public void Clean()
         {
-            driver.Close();
+            PropertiesCollection.driver.Close();
         }
     }
 }

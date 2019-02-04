@@ -32,8 +32,8 @@ namespace SeleniumPageObjectPattern
             page.DropBox.SendKeys("Pubmed");
             page.SearchBox.SendKeys("genes");
             page.SearchButton.Click();
-            string value = page.SearchTitleName.Text;
-            Assert.That(value, Does.Match("Search results"));
+            string title_value = page.SearchTitleName.Text;
+            Assert.That(title_value, Does.Match("Search results"));
         }
 
         // Check that empty search redirect to the correct page with all NCBI databases
@@ -42,8 +42,8 @@ namespace SeleniumPageObjectPattern
         {
             MainPageObject page = new MainPageObject();
             page.SearchButton.Click();
-            string value = page.NcbiDatabasesSearchTitleName.Text;
-            Assert.That(value, Does.Match("NCBI Databases"));
+            string title_value = page.NcbiDatabasesSearchTitleName.Text;
+            Assert.That(title_value, Does.Match("NCBI Databases"));
         }
 
         // Check if all links in left sidebar are clickable
@@ -68,7 +68,21 @@ namespace SeleniumPageObjectPattern
             page.VariationLink.Click();         
         }
 
+        [Test]
+        public void AboutNcbiPageContent()
+        {
+            MainPageObject page = new MainPageObject();
+            page.AboutNcbiPageLink.Click();
+            string our_mission_value = page.OurMissionSection.Text;
+            string structure_value = page.StructureSection.Text;
+            string programs_value = page.ProgramSection.Text;
+            string researchers_value = page.ResearchersSection.Text;
+            Assert.That(our_mission_value, Does.Contain("Our"));
+            Assert.That(structure_value, Does.Contain("Organizational"));
+            Assert.That(programs_value, Does.Contain("Programs"));
+            Assert.That(researchers_value, Does.Contain("Researchers"));
 
+        }
 
         [TearDown]
         public void Clean()

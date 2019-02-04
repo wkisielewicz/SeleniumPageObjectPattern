@@ -78,6 +78,21 @@ namespace SeleniumPageObjectPattern
 
         [FindsBy(How = How.XPath, Using = "//*[@id='main_content']/section[2]/div/h2")]
         public IWebElement NcbiDatabasesSearchTitleName { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='maincontent']/div[1]/div/div/div/ul/li[1]/a")]
+        public IWebElement AboutNcbiPageLink { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='maincontent_1']/section/h2")]
+        public IWebElement OurMissionSection { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='maincontent_2']/section/h2")]
+        public IWebElement StructureSection { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='maincontent_3']/section/h2")]
+        public IWebElement ProgramSection { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='maincontent_4']/section/h2")]
+        public IWebElement ResearchersSection { get; set; }
     }
 
    

@@ -72,6 +72,12 @@ namespace SeleniumPageObjectPattern
 
         [FindsBy(How = How.LinkText, Using = "Variation")]
         public IWebElement VariationLink { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='maincontent']/div/div[3]/div[1]/h2")]
+        public IWebElement SearchTitleName { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='main_content']/section[2]/div/h2")]
+        public IWebElement NcbiDatabasesSearchTitleName { get; set; }
     }
 
    

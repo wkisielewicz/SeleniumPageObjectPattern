@@ -9,27 +9,25 @@ using OpenQA.Selenium.Chrome;
 
 namespace SeleniumPageObjectPattern
 {
-    class Program
+    class LoginOperations
     {
-
-        static void Main(string[] args)
-        {
-            
-        }
-                
         [SetUp]
         public void Initialize()
         {
             PropertiesCollection.driver = new ChromeDriver();
-            PropertiesCollection.driver.Navigate().GoToUrl("https://www.ncbi.nlm.nih.gov/pubmed/");
+            PropertiesCollection.driver.Navigate().GoToUrl("https://www.ncbi.nlm.nih.gov/account/?back_url=https%3A%2F%2Fwww.ncbi.nlm.nih.gov%2F");
         }
 
+        //Login into NCBI account
+
         [Test]
-        public void ExecuteTets()
+        public void IncorrectLogin()
         {
-            SetMethods.SelectDropDown("database", "PMC", PropertyType.Id);
-            SetMethods.EnterText("term", "genes", PropertyType.Id);
-            SetMethods.Click("search", PropertyType.Id);
+            LoginPageObject page = new LoginPageObject();
+            page.NameField.SendKeys("test");
+            page.PasswordField.SendKeys("testpassword");
+            page.SignInButton.Click();
+
         }
 
         [TearDown]

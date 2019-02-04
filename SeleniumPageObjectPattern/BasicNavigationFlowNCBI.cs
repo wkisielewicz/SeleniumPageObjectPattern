@@ -24,18 +24,31 @@ namespace SeleniumPageObjectPattern
             PropertiesCollection.driver.Navigate().GoToUrl("https://www.ncbi.nlm.nih.gov/");
         }
 
+        // Check that searching in PubMed databse is possible
         [Test]
         public void SearchInPubmed()
         {
             MainPageObject page = new MainPageObject();
             page.DropBox.SendKeys("Pubmed");
-            page.DropBox.SendKeys("PMC");
             page.SearchBox.SendKeys("genes");
             page.SearchButton.Click();
+            string value = page.SearchTitleName.Text;
+            Assert.That(value, Does.Match("Search results"));
         }
 
+        // Check that empty search redirect to the correct page with all NCBI databases
         [Test]
-        public void LeftSideBarNavigation()
+        public void EmptySearchOperation()
+        {
+            MainPageObject page = new MainPageObject();
+            page.SearchButton.Click();
+            string value = page.NcbiDatabasesSearchTitleName.Text;
+            Assert.That(value, Does.Match("NCBI Databases"));
+        }
+
+        // Check if all links in left sidebar are clickable
+        [Test]
+        public void LeftSidebarNavigation()
         {
             MainPageObject page = new MainPageObject();
             page.AllResourcesLink.Click();
@@ -54,6 +67,8 @@ namespace SeleniumPageObjectPattern
             page.TrainingTutorialsLink.Click();
             page.VariationLink.Click();         
         }
+
+
 
         [TearDown]
         public void Clean()

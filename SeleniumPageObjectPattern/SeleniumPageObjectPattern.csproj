@@ -56,7 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GetMethods.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="LoginOperations.cs" />
+    <Compile Include="LoginPageObject.cs" />
+    <Compile Include="MainPageObject.cs" />
+    <Compile Include="BasicNavigationFlowNCBI.cs" />
     <Compile Include="PropertiesCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetMethods.cs" />

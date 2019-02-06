@@ -93,6 +93,21 @@ namespace SeleniumPageObjectPattern
 
         [FindsBy(How = How.XPath, Using = "//*[@id='maincontent_4']/section/h2")]
         public IWebElement ResearchersSection { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='home_submit']/div/h2")]
+        public IWebElement SubmitColumn { get; set; }
+
+        [FindsBy(How = How.Id, Using = "submit-to")]
+        public IWebElement SubmitDropBox { get; set; }
+
+        [FindsBy(How = How.Id, Using = "submit-to-genbank")]
+        public IWebElement SubmitGenBankDropBox { get; set; }
+
+        [FindsBy(How = How.Id, Using = "submit-data-button")]
+        public IWebElement SubmitDataButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='how - to - submit - tpa - sequence - data']")]
+        public IWebElement HowToSubmitSequenceData { get; set; }
     }
 
    

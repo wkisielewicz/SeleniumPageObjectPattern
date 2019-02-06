@@ -68,6 +68,7 @@ namespace SeleniumPageObjectPattern
             page.VariationLink.Click();         
         }
 
+        // Check if about page conatins all needed sections
         [Test]
         public void AboutNcbiPageContent()
         {
@@ -83,6 +84,19 @@ namespace SeleniumPageObjectPattern
             Assert.That(researchers_value, Does.Contain("Researchers"));
 
         }
+
+        //Check if main page contains all needed sections
+        [Test]
+        public void MainPageContent()
+        {
+            MainPageObject page = new MainPageObject();
+            page.SubmitColumn.Click();
+            page.SubmitDropBox.SendKeys("GenBank");
+            page.SubmitGenBankDropBox.SendKeys("Third Party Annotations (TPA");
+            page.SubmitDataButton.Click();
+            Assert.That(page.HowToSubmitSequenceData, Does.Match("How to Submit TPA Sequence Data"));
+        }
+
 
         [TearDown]
         public void Clean()
